@@ -16,7 +16,8 @@
                 height: 100%;
             }
         </style>
-		<script src="dist/rainyday.0.1.2.min.js"></script>
+	    <script type="text/javascript" src="http://media.exam.yiboshi.com/online/static/js/jquery/1.9.1/jquery.min.js"></script>
+	    <script src="dist/rainyday.0.1.2.min.js"></script>
         <script>
             function run() {
                 var image = document.getElementById('background');
@@ -29,6 +30,28 @@
                 image.crossOrigin = 'anonymous';
                 image.src = 'img/df2.jpg';
             }
+        </script>
+        <script>
+		function handlerFullScreen(){
+			var height = window.innerHeight;
+			var width = window.innerWidth;
+			//
+			var canvas = document.querySelector("#background");
+			canvas.width=width;
+			canvas.height=height;
+		};
+            $(function () {
+		$(document).on('webkitfullscreenchange mozfullscreenchange fullscreenchange', function(e) {
+		var isFullScreen= $.util.isFullScreen();
+		// 刚进入全屏
+		if(isFullScreen){
+			handlerFullScreen();
+		} else {
+			// 退出全屏
+			handlerFullScreen();
+		}
+	    });
+            });
         </script>
     </head>
     <body onload="run();">
