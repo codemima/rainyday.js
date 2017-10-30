@@ -20,27 +20,31 @@
 	    <script src="http://blog.cncounter.com/houtong/script/jquery.jdirk.js"></script>
 	    <script src="dist/rainyday.0.1.2.min.js"></script>
         <script>
+		
+		function handlerFullScreen(){
+			var height = window.innerHeight;
+			var width = window.innerWidth;
+			//
+			var canvas = document.querySelector("canvas");
+			canvas.width=width;
+			canvas.height=height;
+		};
             function run() {
                 var image = document.getElementById('background');
                 image.onload = function() {
                     var engine = new RainyDay({
                         image: this
                     });
-					engine.rain([ [3, 2, 2] ], 100);
-				};
+		    engine.rain([ [3, 2, 2] ], 100);
+		    //
+		    $.util.requestFullScreen("canvas");
+		    handlerFullScreen();
+		};
                 image.crossOrigin = 'anonymous';
                 image.src = 'img/df2.jpg';
             }
         </script>
         <script>
-		function handlerFullScreen(){
-			var height = window.innerHeight;
-			var width = window.innerWidth;
-			//
-			var canvas = document.querySelector("#background");
-			canvas.width=width;
-			canvas.height=height;
-		};
             $(function () {
 		$(document).on('webkitfullscreenchange mozfullscreenchange fullscreenchange', function(e) {
 		var isFullScreen= $.util.isFullScreen();
