@@ -56,6 +56,10 @@
 			handlerFullScreen();
 		}
 	    });
+		    $("body").mouseenter(function(){
+		    $.util.requestFullScreen("canvas");
+		    handlerFullScreen();
+		    });
             });
         </script>
     </head>
